@@ -1,0 +1,26 @@
+<html>
+<head>
+<script type = "text/javascript" src ="js/jquery-1.11.0.js" ></script>
+<script type = "text/javascript" src ="js/underscore.js" ></script>
+<script type = "text/javascript" src ="js/backbone.js" ></script>
+<script type = "text/javascript">
+	$(function(){
+		$('#new').click(function(){
+			window.location.hash = 'something';
+			console.log(window.location.hash);
+		});
+	});
+	
+	//document.write(Backbone);
+	document.write('<br>');
+	//_.each([1, 2, 3], function(num){alert(num)});
+	
+	Family = Backbone.Model.extend();
+	var Beta1 = new Family({Naam:'Synechron',Umar:30});
+	console.log(Beta1.get('Naam'));
+</script>
+</head>
+<body>
+ <a href="javascript:void(0)" id='new'>test</a>
+</body>
+</html>

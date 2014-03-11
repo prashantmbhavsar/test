@@ -1,0 +1,58 @@
+<html>
+<head>
+<script type="text/javascript" src="js/underscore-1.6.js"> 
+</script>
+<script type="text/javascript" src="js/backbone-1.1.js"> 
+</script>
+<script type="text/javascript"> 
+
+
+	Politician=Backbone.Model.extend({
+		defaults:{
+			name:'Sarad',
+			age:35,
+			fraudCount:10,
+			assets:'500 CR'
+		},
+		initialize:function(){
+			console.log("In Politician constructor!");
+			//this.bind('change:fraudCount',this.doSomething);
+			//this.bind('change:assets',this.doSomething);
+			this.bind('change',function(model){ this.doSomething(model,'Ritesh Tyagi');});
+		},
+		display:function(){
+			console.log('Name : '+this.get('name'));
+			console.log('Age  : '+this.get('age'));
+			console.log('Fraud Count: '+this.get('fraudCount'));
+			console.log('Undeclared Assets: '+this.get('assets'));
+		},
+		doMore:function(){
+			this.set('fraudCount',this.get('fraudCount')+1);
+			console.log('One more fraud is in pocket!');
+		},
+		doSomething:function(model,user){
+			console.log('Current User : '+user);
+			console.log('Property value changed!');
+			console.log('New Value :'+model.get('fraudCount'));
+			console.log('New Value :'+model.get('assets'));
+			console.log('New Value :'+model.get('age'));
+		}
+		
+	});
+
+	
+	var lalu=new Politician({name:'Lalu',age:56,fraudCount:70});
+	lalu.display();
+	//lalu.doMore();
+	//lalu.doMore();
+	//lalu.set({fraudCount:90});
+	//lalu.set({assets:'1000 CR'});
+	lalu.set({age:23});
+
+	
+</script>
+</head>
+<body>
+<h2>Model with property watchers example</h2>
+</body>
+</html>

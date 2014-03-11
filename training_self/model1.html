@@ -1,0 +1,49 @@
+<html>
+<head>
+<script type="text/javascript" src="js/underscore-1.6.js"> 
+</script>
+<script type="text/javascript" src="js/backbone-1.1.js"> 
+</script>
+<script type="text/javascript"> 
+
+
+	Politician=Backbone.Model.extend({
+		defaults:{
+			name:'Sarad',
+			age:35,
+			fraudCount:10,
+			assets:'500 CR'
+		},
+		initialize:function(){
+			console.log("In Politician constructor!");
+		}
+	});
+
+	
+	var lalu=new Politician({name:'Lalu',age:56});
+	var sonia=new Politician({name:'Sonia'});
+	
+	console.log(sonia.get('name'));
+	console.log(sonia.get('age'));
+	console.log(sonia.get('fraudCount'));
+	console.log(sonia.get('assets'));
+	
+	
+	console.log(lalu.get('name'));
+	console.log(lalu.get('age'));
+	
+	lalu.set({age:70,assets:'15000 CR'});
+	
+	console.log(lalu.get('age'));
+	
+	lalu.set({fraudCount:100});
+	
+	console.log(lalu.get('fraudCount'));
+	console.log(lalu.get('assets'));
+	
+</script>
+</head>
+<body>
+<h2>Simple Model Creation example</h2>
+</body>
+</html>

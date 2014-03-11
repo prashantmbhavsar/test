@@ -1,0 +1,70 @@
+<html>
+<head>
+<style type='text/css'>
+.test{
+background-color:red;
+}
+</style>
+<script type="text/javascript" src="js/jquery-1.11.0.js"> 
+</script>
+<script type="text/javascript" src="js/underscore-1.6.js"> 
+</script>
+<script type="text/javascript" src="js/backbone-1.1.js"> 
+</script>
+<script type="text/javascript"> 
+
+//var html = require(['text!template.html']);
+//alert(html);
+
+$(function(){
+
+
+	SampleModel=Backbone.Model.extend({
+		defaults:{
+			city: 'Mumbai'
+		}
+	});
+
+	SampleView=Backbone.View.extend({
+		//el:$('#span0'),
+		tagName: 'span',
+		className: 'test',
+		id:'span0',
+		initialize:function(){
+			console.log("In Politician constructor!");
+			this.render();
+			console.log(this.el);
+			console.log(this.$el);
+		},
+		render:function(){
+			$(".new").append(this.el);
+			$('#span0').append("gjkgskedbjk");			
+			
+			var tempStr = $('#testTemp').html();
+			var tem = _.template(tempStr, this.model.toJSON());
+			this.$el.append(tem);
+			//this.$el.addClass('test');
+		}
+	});
+	
+	var smModel1 = new SampleModel({city:'Pune'});
+	var smModel2 = new SampleModel({city:'RJ'});
+	new SampleView({model:smModel1});
+	new SampleView({model:smModel2});
+});
+
+	
+	
+	
+</script>
+</head>
+<body>
+<script type='text/template' id='testTemp'>
+	<div>
+		<p><li>City:<%= city %></li></p>
+	</div>
+</script>
+<h2>Simple Model Creation example</h2>
+<div class ='new'></div>
+</body>
+</html>
